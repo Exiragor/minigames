@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { RouteDataService } from "@core/services/route-data.service";
+import { Observable } from "rxjs";
+import { TLayout } from "@core/models/layouts.model";
+import { map } from "rxjs/operators";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +10,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'minigames';
+  layout$: Observable<TLayout>
+
+  constructor(private _routeDataService: RouteDataService) {
+    this.layout$ = this._routeDataService.data$.pipe(map(({layout}) => layout));
+  }
 }
