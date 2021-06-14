@@ -1,0 +1,10 @@
+<div class="list">
+  <button *ngFor="let item of items"
+          class="list__item"
+          mat-raised-button
+          [color]="item.color || 'primary'"
+          [routerLink]="item.link"
+  >
+    {{ item.name }}
+  </button>
+</div>

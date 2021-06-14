@@ -1,0 +1,20 @@
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { GamesComponent } from "./components/games/games.component";
+
+const routes: Routes = [
+  {
+    path: 'barley-break',
+    loadChildren: () => import('./barley-break/barley-break.module').then((m) => m.BarleyBreakModule),
+  },
+  {
+    path: '',
+    component: GamesComponent
+  }
+];
+
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
+})
+export class GamesRoutingModule { }
